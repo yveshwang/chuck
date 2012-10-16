@@ -25,5 +25,11 @@ You can configure the port by specifying the following on the command-line or as
 
 -Dcom.varnish.chuck.port=1234
 
+By default chuck serves up a single svg img around 41 bytes in size. You can increase the number of this image served to ramp up the size of the page by doing:
+
+-Dcom.varnish.chuck.iteration=6000
+
+6000 iterations will nap you around 240 kb worth of data.
+
 
 
