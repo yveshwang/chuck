@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="bundle" name="chuck">	
+	<path id="jetty">
+		<pathelement location="lib/jetty-all-8.1.2.v20120308.jar" />
+		<pathelement location="lib/servlet-api-3.0.jar" />
+	</path>
+
+	<!-- set up -->
+	<target name="init">
+		<mkdir dir="dist" />
+		<mkdir dir="war/WEB-INF/classes"/>
+		<mkdir dir="war/WEB-INF/lib" />
+	</target>
+
+	<!-- cleaning -->
+	<target name="clean">
+		<delete dir="dist"/>
+		<delete dir="war/WEB-INF/classes"/>
+    	<delete dir="war/WEB-INF/lib"/>
+		<delete dir="bundle"/>
+	</target>
+	
+	<target name="war" depends="build">
+		<copy includeemptydirs="false" todir="war/WEB-INF/lib">
+			<fileset dir="lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</copy>
+		<echo message="packaging ${ant.project.name}: ${ant.file}"/>
+		<zip destfile="dist/${ant.project.name}.war" basedir="war" />
+	</target>
+		
+	<target name="jar" depends="build">
+		<echo message="packaging ${ant.project.name}: ${ant.file}"/>
+		<jar destfile="dist/${ant.project.name}.jar" basedir="war/WEB-INF/classes" excludes="**/Test.class" />
+	</target>
+
+	<target name="dist" depends="war, jar"/>
+	
+	<!-- compiling -->
+	<target name="build" depends="init">
+		<echo message="compiling ${ant.project.name}: ${ant.file}"/>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="war/WEB-INF/classes">
+			<src path="src"/>
+			<classpath refid="jetty"/>
+		</javac>
+	</target>
+	
+	<target name="bundle" depends="dist">
+		<echo message="creating a single jar with dependencies bundled."/>
+		<mkdir dir="bundle"/>
+		<copy todir="bundle" verbose="yes" flatten="yes" failonerror="no">
+			<path refid="jetty" />
+		</copy>
+		<copy todir="bundle" file="dist/chuck.jar"/>
+		<jar destfile="dist/chuck-bundle.jar" index="true">
+			<zipgroupfileset dir="bundle" includes="**/*.jar" />
+			<manifest>
+        		<attribute name="Main-Class" value="com.varnish.chuck.Chuck"/>
+     		</manifest>
+		</jar>
+</target>
+</project>
