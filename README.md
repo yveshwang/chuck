@@ -31,5 +31,10 @@ By default chuck serves up a single svg img around 41 bytes in size. You can inc
 
 6000 iterations will nap you around 240 kb worth of data.
 
+example
+-------
+java -Dcom.varnish.chuck.port=1234 -Dcom.varnish.chuck.iteration=100 -jar chuck-bundle.jar 
+
+the above command will kick off on port 1234 and serves 100 of these 41 byte images.
 
 
