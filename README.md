@@ -11,7 +11,7 @@ build
 ensure that you have java and ant running, then:
 ant bundle 
 
-This will build both a jar file with no dependencies, a bundled jar with all dependencies and a war file. 
+This will build both a **jar** file with no dependencies, a **bundled jar** with all dependencies and a **war** file. 
 
 run
 ---
