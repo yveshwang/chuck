@@ -1,3 +1,6 @@
+**Yves Hwang**
+**16.10.2012**
+
 chuck
 =====
 
@@ -23,5 +26,4 @@ You can configure the port by specifying the following on the command-line or as
 -Dcom.varnish.chuck.port=1234
 
 
-@author Yves Hwang
-@date	16.10.2012
+
