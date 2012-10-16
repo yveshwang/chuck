@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/jetty-all-8.1.2.v20120308.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-3.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
