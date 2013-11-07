@@ -6,7 +6,7 @@
 	</path>
 
 	<!-- set up -->
-	<target name="init">
+	<target name="init" >
 		<mkdir dir="dist" />
 		<mkdir dir="war/WEB-INF/classes"/>
 		<mkdir dir="war/WEB-INF/lib" />
